@@ -1,32 +1,24 @@
-import React , {useState} from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { globalStyles } from '../styles/global';
+import Card from '../shared/card';
 
 export default function Home({ navigation }) {
-  // const pressHandler = () => {
-  //   // navigation.navigate('ReviewDetails');
-  //   navigation.push('ReviewDetails');
-  // }
   const [reviews, setReviews] = useState([
-    {title:'Gone With The Wind', rating:5, body:'lorem ipsum', key:'1'},
-    {title:'Final Fantasy', rating:3, body:'lorem ipsum', key:'2'},
-    {title:'John Wick', rating:4, body:'lorem ipsum', key:'3'},
-    {title:'Transporer', rating:5, body:'lorem ipsum', key:'4'},
-  ])
+    { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
+    { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
+    { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
+  ]);
+
   return (
     <View style={globalStyles.container}>
-      {/* <Text style={globalStyles.titleText}>Home Screen</Text> */}
-      {/* <Button title='Go To Review Details' onPress={pressHandler}/> */}
-      <FlatList
-        data={reviews}
-        renderItem={({item})=>(
-          <TouchableOpacity onPress={()=>navigation.navigate('ReviewDetails', item)}>
+      <FlatList data={reviews} renderItem={({ item }) => (
+        <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
+          <Card>
             <Text style={globalStyles.titleText}>{ item.title }</Text>
-          </TouchableOpacity>
-        )} />
+          </Card>
+        </TouchableOpacity>
+      )} />
     </View>
   );
 }
-
-

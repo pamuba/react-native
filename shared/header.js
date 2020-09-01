@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Header({ title, navigation }) {
@@ -11,7 +11,8 @@ export default function Header({ title, navigation }) {
   return (
     <View style={styles.header}>
       <MaterialIcons name='menu' size={28} onPress={openMenu} style={styles.icon} />
-      <View>
+      <View style={styles.headerTitle}>
+        <Image source={require('../assets/heart_logo.png')} style={styles.headerImage}/>
         <Text style={styles.headerText}>{title}</Text>
       </View>
     </View>
@@ -35,5 +36,13 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 16,
+  }, 
+  headerImage:{
+      width:26,
+      height:26,
+      marginHorizontal:10,
+  },
+  headerTitle:{
+      flexDirection:'row'
   }
 });
